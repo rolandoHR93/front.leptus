@@ -1,12 +1,16 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
     selector     : 'landing-home',
     templateUrl  : './home.component.html',
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush
+
 })
 export class LandingHomeComponent
 {
+    yearlyBilling: boolean = true;
+
     /**
      * Constructor
      */
