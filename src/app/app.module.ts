@@ -13,6 +13,8 @@ import { LayoutModule } from 'app/layout/layout.module';
 import { AppComponent } from 'app/app.component';
 import { appRoutes } from 'app/app.routing';
 
+import { AppRoutingModule } from './app-routing.module';
+
 const routerConfig: ExtraOptions = {
     preloadingStrategy       : PreloadAllModules,
     scrollPositionRestoration: 'enabled'
@@ -25,7 +27,9 @@ const routerConfig: ExtraOptions = {
     imports     : [
         BrowserModule,
         BrowserAnimationsModule,
-        RouterModule.forRoot(appRoutes, routerConfig),
+
+        // RouterModule.forRoot(appRoutes, routerConfig),
+        AppRoutingModule,
 
         // Fuse, FuseConfig & FuseMockAPI
         FuseModule,
