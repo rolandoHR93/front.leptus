@@ -10,7 +10,6 @@ import { ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
 })
 export class HomePageComponent implements OnInit {
 
-    yearlyBilling: boolean = true;
 
   constructor() { }
 
