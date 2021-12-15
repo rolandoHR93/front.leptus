@@ -14,6 +14,7 @@ import { AppComponent } from 'app/app.component';
 import { appRoutes } from 'app/app.routing';
 
 import { AppRoutingModule } from './app-routing.module';
+import { HomePageModule } from './pages/home/home-page/home-page.module';
 
 const routerConfig: ExtraOptions = {
     preloadingStrategy       : PreloadAllModules,
@@ -30,6 +31,7 @@ const routerConfig: ExtraOptions = {
 
         // RouterModule.forRoot(appRoutes, routerConfig),
         AppRoutingModule,
+        // HomePageModule,
 
         // Fuse, FuseConfig & FuseMockAPI
         FuseModule,
