@@ -11,6 +11,8 @@ import { PriceComponent } from './price/price.component';
 import { FooterComponent } from './footer/footer.component';
 import { CardsComponent } from './cards/cards.component';
 import { FeaturesComponent } from './features/features.component';
+import { CtaComponent } from './cta/cta.component';
+import { QuestionsComponent } from './questions/questions.component';
 
 
 @NgModule({
@@ -21,6 +23,8 @@ import { FeaturesComponent } from './features/features.component';
     FooterComponent,
     CardsComponent,
     FeaturesComponent,
+    CtaComponent,
+    QuestionsComponent,
   ],
   exports: [
     NavbarComponent,
@@ -29,6 +33,8 @@ import { FeaturesComponent } from './features/features.component';
     PriceComponent,
     FooterComponent,
     FeaturesComponent,
+    CtaComponent,
+    QuestionsComponent,
   ],
   imports: [
     CommonModule,
