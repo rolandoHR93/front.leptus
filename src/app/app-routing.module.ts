@@ -8,7 +8,7 @@ const routes: Routes = [
     // { path: '/auth', redirectTo: '/auth', pathMatch: 'full'},
 
 
-    { path: '', redirectTo: 'home', pathMatch: 'full'},
+    { path: 'home', redirectTo: '', pathMatch: 'full'},
     // { path: '', component: HomePageComponent },
     // { path: 'home', component: HomePageComponent },
     { path: '**', component: PageNotFoundComponent },
