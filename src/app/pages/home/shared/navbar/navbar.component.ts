@@ -12,4 +12,11 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
   }
 
+   toPrice(): void{
+
+    // document.getElementById("precios_section").scrollIntoView({alignToTop: "false"});;
+
+    document.getElementById("precios_section").scrollIntoView({behavior: "smooth"});
+  }
+
 }
