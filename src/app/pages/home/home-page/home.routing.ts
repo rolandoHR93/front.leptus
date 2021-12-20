@@ -8,7 +8,7 @@ import { LayoutComponent } from 'app/layout/layout.component';
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 const routes: Routes = [
     {
-        path:'',
+        path:'home',
         component  : LayoutComponent,
         data: {
             layout: 'empty'

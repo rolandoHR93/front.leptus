@@ -8,7 +8,14 @@ const routes: Routes = [
     // { path: '/auth', redirectTo: '/auth', pathMatch: 'full'},
 
 
-    { path: 'home', redirectTo: '', pathMatch: 'full'},
+    { path: '', redirectTo: 'home', pathMatch: 'full'},
+    {
+        path: 'login',
+        loadChildren: () =>
+          import('./pages/auth/login/login.module').then(
+            (m) => m.LoginModule
+          ),
+    },
     // { path: '', component: HomePageComponent },
     // { path: 'home', component: HomePageComponent },
     { path: '**', component: PageNotFoundComponent },
