@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PageNotFoundComponent } from './pages/errors/page-not-found/page-not-found.component';
-import { HomeRoutingModule } from './pages/home/home-page/home.routing';
+
 import { AuthGuard } from 'app/core/auth/guards/auth.guard';
 import { NoAuthGuard } from 'app/core/auth/guards/noAuth.guard';
 import { LayoutComponent } from 'app/layout/layout.component';
@@ -80,7 +79,7 @@ const routes: Routes = [
         ]
     },
 
-    { path: '**', component: PageNotFoundComponent },
+    // { path: '**', component: PageNotFoundComponent },
 
 ];
 
