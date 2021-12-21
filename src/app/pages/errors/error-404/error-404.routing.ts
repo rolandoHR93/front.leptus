@@ -3,7 +3,7 @@ import { Error404Component } from './error-404.component';
 
 export const error404Routes: Route[] = [
     {
-        path     : '',
+        path     : '**',
         component: Error404Component
     }
 ];
