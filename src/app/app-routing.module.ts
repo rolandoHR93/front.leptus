@@ -12,7 +12,7 @@ import { InitialDataResolver } from 'app/app.resolvers';
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 const routes: Routes = [
     // Redirect empty path to '/home'
-    {path: '', redirectTo: 'sign-in', pathMatch : 'full'},
+    {path: '', redirectTo: 'home', pathMatch : 'full'},
 
     // Redirect signed in user to the '/home'
     //
