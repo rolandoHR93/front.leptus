@@ -28,6 +28,7 @@ export class AuthService {
 
   login2(user: any): Observable<any> {
     return this.http.post('https://reqres.in/api/login', user);
+    // return this.http.get('https://reqres.in/api/users/2');
   }
 
   register(nombres: string, email: string, password: string): Observable<any> {
