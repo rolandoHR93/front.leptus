@@ -23,8 +23,8 @@ const routes: Routes = [
     // Auth routes for guests
     {
         path: '',
-        // canActivate: [NoAuthGuard],
-        // canActivateChild: [NoAuthGuard],
+        canActivate: [NoAuthGuard],
+        canActivateChild: [NoAuthGuard],
         component: LayoutComponent,
         data: {
             layout: 'empty'
