@@ -3,6 +3,11 @@ import { HttpClient } from '@angular/common/http';
 import { catchError, Observable, of, switchMap, throwError } from 'rxjs';
 import { AuthUtils } from 'app/core/auth/auth.utils';
 import { UserService } from 'app/core/user/user.service';
+import { AppSettings } from '../config/constants';
+
+
+const API_ENDPOINT_LOCAL = AppSettings.API_ENDPOINT_LOCAL + '/auth/';
+const CODE_API = AppSettings.CODE_API;
 
 @Injectable()
 export class AuthService
