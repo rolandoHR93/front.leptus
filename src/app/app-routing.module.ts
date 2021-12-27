@@ -53,7 +53,7 @@ const routes: Routes = [
         ]
     },
 
-    // Landing routes
+    // Landing routes 🏠
     {
         path: '',
         component  : LayoutComponent,
@@ -67,7 +67,7 @@ const routes: Routes = [
         ]
     },
 
-    // Admin routes
+    // Admin routes 📌
     {
         path       : '',
         canActivate: [AuthGuard],

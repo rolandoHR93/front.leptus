@@ -85,7 +85,7 @@ export class AuthService
 
         //  return this._httpClient.get('https://reqres.in/api/users/2');
 
-        return this._httpClient.post(API_ENDPOINT_LOCAL + 'login/' + CODE_API, credentials).pipe(
+        return this._httpClient.post(API_ENDPOINT_LOCAL + 'login/' + CODE_API, credentials, httpOptions).pipe(
             switchMap((response: any) => {
 
                  // Store the access token in the local storage
