@@ -44,6 +44,30 @@
                     </mat-error>
                 </mat-form-field>
 
+                <!-- Apellido Paterno field -->
+                <mat-form-field class="w-full">
+                    <mat-label>Apellido Paterno</mat-label>
+                    <input
+                        id="apellido_paterno"
+                        matInput
+                        [formControlName]="'apellido_paterno'">
+                    <mat-error *ngIf="signUpForm.get('apellido_paterno').hasError('required')">
+                        El Apellido Paterno es obligatorio
+                    </mat-error>
+                </mat-form-field>
+
+                <!-- Apellido Materno field -->
+                <mat-form-field class="w-full">
+                    <mat-label>Apellido Materno</mat-label>
+                    <input
+                        id="apellido_materno"
+                        matInput
+                        [formControlName]="'apellido_materno'">
+                    <mat-error *ngIf="signUpForm.get('apellido_materno').hasError('required')">
+                        El Apellido Materno es obligatorio
+                    </mat-error>
+                </mat-form-field>
+
                 <!-- Email field -->
                 <mat-form-field class="w-full">
                     <mat-label>Correo electrónico</mat-label>
