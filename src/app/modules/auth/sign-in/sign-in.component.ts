@@ -96,7 +96,7 @@ export class AuthSignInComponent implements OnInit
                     // Navigate to the redirect url
 
                     this._tokenStorage.saveToken(response.access_token, response.token_type);
-
+                    this._tokenStorage.saveUser(response.user);
                     this._router.navigateByUrl(redirectURL);
                 },
                 (err) => {
