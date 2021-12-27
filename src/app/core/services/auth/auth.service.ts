@@ -33,6 +33,11 @@ export class AuthService {
         return this._httpClient.post(API_ENDPOINT_LOCAL + 'login/' + CODE_API, credentials, httpOptions);
     }
 
+    signUp(user: { name: string; email: string; password: string; company: string }): Observable<any>
+    {
+        return this._httpClient.post(API_ENDPOINT_LOCAL + 'register/' + CODE_API, user, httpOptions);
+    }
+
 
     register(nombres: string, email: string, password: string): Observable<any> {
         return this._httpClient.post(API_ENDPOINT_LOCAL + 'register/' + CODE_API, {

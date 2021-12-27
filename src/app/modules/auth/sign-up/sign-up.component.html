@@ -32,14 +32,14 @@
                 class="mt-8"
                 [formGroup]="signUpForm">
 
-                <!-- Name field -->
+                <!-- Nombres field -->
                 <mat-form-field class="w-full">
                     <mat-label>Nombre completo</mat-label>
                     <input
-                        id="name"
+                        id="nombres"
                         matInput
-                        [formControlName]="'name'">
-                    <mat-error *ngIf="signUpForm.get('name').hasError('required')">
+                        [formControlName]="'nombres'">
+                    <mat-error *ngIf="signUpForm.get('nombres').hasError('required')">
                         El nombre completo es obligatorio
                     </mat-error>
                 </mat-form-field>
