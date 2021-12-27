@@ -68,6 +68,15 @@
                     </mat-error>
                 </mat-form-field>
 
+                <!-- Company field -->
+                <mat-form-field class="w-full">
+                    <mat-label>Empresa</mat-label>
+                    <input
+                        id="company-confirm"
+                        matInput
+                        [formControlName]="'company'">
+                </mat-form-field>
+
                 <!-- Email field -->
                 <mat-form-field class="w-full">
                     <mat-label>Correo electrónico</mat-label>
@@ -111,14 +120,7 @@
                     </mat-error>
                 </mat-form-field>
 
-                <!-- Company field -->
-                <mat-form-field class="w-full">
-                    <mat-label>Empresa</mat-label>
-                    <input
-                        id="company-confirm"
-                        matInput
-                        [formControlName]="'company'">
-                </mat-form-field>
+
 
                 <!-- ToS and PP -->
                 <div class="inline-flex items-end w-full mt-1.5">
