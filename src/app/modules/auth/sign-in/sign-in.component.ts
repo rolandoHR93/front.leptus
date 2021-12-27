@@ -78,7 +78,6 @@ export class AuthSignInComponent implements OnInit
         // Sign in
         this._authService.signIn(this.signInForm.value)
             .subscribe(
-                // () => {
 
                 //     // Set the redirect url.
                 //     // The '/signed-in-redirect' is a dummy url to catch the request and redirect the user
@@ -86,10 +85,6 @@ export class AuthSignInComponent implements OnInit
                 //     // routing file and we don't have to touch here.
                 //     const redirectURL = this._activatedRoute.snapshot.queryParamMap.get('redirectURL') || '/signed-in-redirect';
 
-                //     // Navigate to the redirect url
-                //     this._router.navigateByUrl(redirectURL);
-
-                // },
                 (response) => {
                     document.body.style.cursor = 'auto';
                     const redirectURL = this._activatedRoute.snapshot.queryParamMap.get('redirectURL') || '/signed-in-redirect';
@@ -110,7 +105,7 @@ export class AuthSignInComponent implements OnInit
                     // Set the alert
                     this.alert = {
                         type   : 'error',
-                        message: 'Incorrecto email o password'
+                        message: 'Email o Password Incorrecto'
                     };
 
                     // Show the alert
