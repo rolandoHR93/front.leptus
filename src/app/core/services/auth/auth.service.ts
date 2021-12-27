@@ -21,17 +21,6 @@ export class AuthService {
 
     constructor(private _httpClient: HttpClient) {}
 
-    // eslint-disable-next-line @typescript-eslint/member-ordering
-    set accessToken(token: string)
-    {
-        localStorage.setItem('accessToken', token);
-    }
-
-    // eslint-disable-next-line @typescript-eslint/member-ordering
-    get accessToken(): string
-    {
-        return localStorage.getItem('accessToken') ?? '';
-    }
 
     signIn(credentials: { email: string; password: string }): Observable<any>
     {
@@ -53,4 +42,15 @@ export class AuthService {
         }, httpOptions);
     }
 
+    // eslint-disable-next-line @typescript-eslint/member-ordering
+    set accessToken(token: string)
+    {
+        localStorage.setItem('accessToken', token);
+    }
+
+    // eslint-disable-next-line @typescript-eslint/member-ordering
+    get accessToken(): string
+    {
+         return localStorage.getItem('accessToken') ?? '';
+    }
 }
