@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AppSettings } from 'app/core/config/constants';
-import { Observable } from 'rxjs';
+import { catchError, Observable, of, switchMap, throwError } from 'rxjs';
 
 const AUTH_API = AppSettings.API_ENDPOINT + '/auth/';
+const API_ENDPOINT_LOCAL = AppSettings.API_ENDPOINT_LOCAL + '/auth/';
 const CODE_API = AppSettings.CODE_API;
+
 
 const httpOptions = {
     headers: new HttpHeaders({ 'content-type': 'application/json' })
@@ -15,28 +17,40 @@ const httpOptions = {
 })
 export class AuthService {
 
-    constructor(private http: HttpClient) {}
+    private _authenticated: boolean = false;
+
+    constructor(private _httpClient: HttpClient) {}
+
+    // eslint-disable-next-line @typescript-eslint/member-ordering
+    set accessToken(token: string)
+    {
+        localStorage.setItem('accessToken', token);
+    }
+
+    // eslint-disable-next-line @typescript-eslint/member-ordering
+    get accessToken(): string
+    {
+        return localStorage.getItem('accessToken') ?? '';
+    }
+
+    signIn(credentials: { email: string; password: string }): Observable<any>
+    {
+        // Throw error, if the user is already logged in
+        if ( this._authenticated )
+        {
+            return throwError('User is already logged in.');
+        }
+
+        return this._httpClient.post(API_ENDPOINT_LOCAL + 'login/' + CODE_API, credentials, httpOptions);
+    }
 
 
-  login(email: string, password: string): Observable<any> {
-
-    return this.http.post(AUTH_API + 'login/' + CODE_API, {
-      email,
-      password
-    }, httpOptions);
-  }
-
-  login2(user: any): Observable<any> {
-    return this.http.post('https://reqres.in/api/login', user);
-    // return this.http.get('https://reqres.in/api/users/2');
-  }
-
-  register(nombres: string, email: string, password: string): Observable<any> {
-    return this.http.post(AUTH_API + 'register/' + CODE_API, {
-      nombres,
-      email,
-      password
-    }, httpOptions);
-  }
+    register(nombres: string, email: string, password: string): Observable<any> {
+        return this._httpClient.post(API_ENDPOINT_LOCAL + 'register/' + CODE_API, {
+        nombres,
+        email,
+        password
+        }, httpOptions);
+    }
 
 }

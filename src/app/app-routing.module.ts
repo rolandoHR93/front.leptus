@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AuthGuard } from 'app/core/auth/guards/auth.guard';
-import { NoAuthGuard } from 'app/core/auth/guards/noAuth.guard';
+import { AuthGuard } from './core/guards/auth/auth.guard';
+import { NoAuthGuard } from './core/guards/auth/no-auth.guard';
 import { LayoutComponent } from 'app/layout/layout.component';
 import { InitialDataResolver } from 'app/app.resolvers';
 
@@ -24,7 +24,7 @@ const routes: Routes = [
     {
         path: '',
         canActivate: [NoAuthGuard],
-        canActivateChild: [NoAuthGuard],
+        // canActivateChild: [NoAuthGuard],
         component: LayoutComponent,
         data: {
             layout: 'empty'
@@ -71,7 +71,7 @@ const routes: Routes = [
     {
         path       : '',
         canActivate: [AuthGuard],
-        canActivateChild: [AuthGuard],
+        // canActivateChild: [AuthGuard],
         component  : LayoutComponent,
         resolve    : {
             initialData: InitialDataResolver,
