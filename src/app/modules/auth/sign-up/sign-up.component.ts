@@ -54,7 +54,7 @@ export class AuthSignUpComponent implements OnInit
                 apellido_materno      : ['', Validators.required],
                 email     : ['', [Validators.required, Validators.email]],
                 password  : ['', Validators.required],
-                company   : [''],
+                empresa   : [''],
                 agreements: ['', Validators.requiredTrue]
             }
         );
@@ -75,18 +75,19 @@ export class AuthSignUpComponent implements OnInit
              return;
          }
          document.body.style.cursor = 'progress';
+         console.log(this.signUpForm.value);
 
          this._authService.signUp(this.signUpForm.value)
             .subscribe(
                 (response) => {
-                console.log(response);
-                const redirectURL = this._activatedRoute.snapshot.queryParamMap.get('redirectURL') || '/signed-in-redirect';
+                    console.log(response);
+                    const redirectURL = this._activatedRoute.snapshot.queryParamMap.get('redirectURL') || '/signed-in-redirect';
 
-                this._tokenStorage.saveToken(response.access_token, response.token_type);
+                    this._tokenStorage.saveToken(response.access_token, response.token_type);
                     this._tokenStorage.saveUser(response.user);
                     this._router.navigateByUrl(redirectURL);
 
-                document.body.style.cursor = 'auto';
+                    document.body.style.cursor = 'auto';
                 },
                 (err) => {
                     // Set the alert
