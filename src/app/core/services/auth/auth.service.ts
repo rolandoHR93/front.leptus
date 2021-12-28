@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AppSettings } from 'app/core/config/constants';
 import { catchError, Observable, of, switchMap, throwError } from 'rxjs';
 
-const AUTH_API = AppSettings.API_ENDPOINT + '/auth/';
+const AUTH_API = AppSettings.API_END_SERVICE + '/auth/';
 const API_ENDPOINT_LOCAL = AppSettings.API_ENDPOINT_LOCAL + '/auth/';
 const CODE_API = AppSettings.CODE_API;
 
@@ -30,17 +30,17 @@ export class AuthService {
             return throwError('User is already logged in.');
         }
 
-        return this._httpClient.post(API_ENDPOINT_LOCAL + 'login/' + CODE_API, credentials, httpOptions);
+        return this._httpClient.post(AUTH_API + 'login/' + CODE_API, credentials, httpOptions);
     }
 
     signUp(user: { name: string; email: string; password: string; company: string }): Observable<any>
     {
-        return this._httpClient.post(API_ENDPOINT_LOCAL + 'register/' + CODE_API, user, httpOptions);
+        return this._httpClient.post(AUTH_API + 'register/' + CODE_API, user, httpOptions);
     }
 
 
     register(nombres: string, email: string, password: string): Observable<any> {
-        return this._httpClient.post(API_ENDPOINT_LOCAL + 'register/' + CODE_API, {
+        return this._httpClient.post(AUTH_API + 'register/' + CODE_API, {
         nombres,
         email,
         password
