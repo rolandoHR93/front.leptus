@@ -55,12 +55,7 @@ export class AuthSignUpComponent implements OnInit
             }),
             step3: this._formBuilder.group({
                 email   : ['', [Validators.required, Validators.email]],
-                byEmail          : this._formBuilder.group({
-                    companyNews     : [true],
-                    featuredProducts: [false],
-                    messages        : [true]
-                }),
-                pushNotifications: ['everything', Validators.required]
+                password   : ['', [Validators.required]],
             })
         });
     }
