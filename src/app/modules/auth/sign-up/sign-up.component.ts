@@ -51,7 +51,6 @@ export class AuthSignUpComponent implements OnInit
                 direccion : ['', Validators.required],
                 ubigeo : ['', Validators.required],
                 // --------
-                about    : ['']
             }),
             step3: this._formBuilder.group({
                 email   : ['', [Validators.required, Validators.email]],
