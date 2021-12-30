@@ -11,6 +11,7 @@ export class AuthSignUpComponent implements OnInit
 {
     horizontalStepperForm: FormGroup;
     verticalStepperForm: FormGroup;
+    resetPasswordForm: FormGroup;
 
     /**
      * Constructor
@@ -54,8 +55,22 @@ export class AuthSignUpComponent implements OnInit
             }),
             step3: this._formBuilder.group({
                 email   : ['', [Validators.required, Validators.email]],
-                password   : ['', [Validators.required]],
+                password       : ['', Validators.required],
+                passwordConfirm: ['', Validators.required]
             })
         });
+    }
+
+    resetPassword(): void
+    {
+        // Return if the form is invalid
+        if ( this.resetPasswordForm.invalid )
+        {
+            return;
+        }
+
+        // Disable the form
+        this.resetPasswordForm.disable();
+
     }
 }
