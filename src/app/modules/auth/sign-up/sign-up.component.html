@@ -299,10 +299,8 @@
                         [stepControl]="verticalStepperForm.get('step3')"
                         #verticalStepperStep3>
                         <ng-template matStepLabel>Perfil</ng-template>
-                        <p class="my-6 font-medium">
-                            People here will get to know you with this information
-                        </p>
-                        <div class="flex">
+
+                        <div class="flex mt-2">
                             <mat-form-field class="flex-auto">
                                 <input
                                     matInput
@@ -323,6 +321,7 @@
                                     id="password"
                                     matInput
                                     type="password"
+                                    [placeholder]="'Password'"
                                     [formControlName]="'password'"
                                     #passwordField>
                                 <button
@@ -353,6 +352,7 @@
                                     id="password-confirm"
                                     matInput
                                     type="password"
+                                    [placeholder]="'Confirmar Password'"
                                     [formControlName]="'passwordConfirm'"
                                     #passwordConfirmField>
                                 <button
