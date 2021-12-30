@@ -33,25 +33,25 @@ export class AuthSignUpComponent implements OnInit
         // Vertical stepper form
         this.verticalStepperForm = this._formBuilder.group({
             step1: this._formBuilder.group({
-                nombres : ['a', Validators.required],
-                apellido_paterno : ['a', Validators.required],
-                apellido_materno : ['a', Validators.required],
+                nombres : ['', Validators.required],
+                apellido_paterno : ['', Validators.required],
+                apellido_materno : ['', Validators.required],
                 // --------
-                tipo_documento : ['2', Validators.required],
-                nro_documento : ['a', Validators.required],
-                sexo : ['1', Validators.required],
-                fecha_nacimiento : ['a', Validators.required],
-                direccion : ['a', Validators.required],
-                ubigeo : ['a', Validators.required],
+                tipo_documento : ['', Validators.required],
+                nro_documento : ['', Validators.required],
+                sexo : ['', Validators.required],
+                fecha_nacimiento : ['', Validators.required],
+                direccion : ['', Validators.required],
+                ubigeo : ['', Validators.required],
             }),
             step2: this._formBuilder.group({
-                razon_social: ['a', Validators.required],
-                nombre_comercial: ['a', Validators.required],
+                razon_social: ['', Validators.required],
+                nombre_comercial: ['', Validators.required],
                 tipo_documento: ['1', Validators.required],
-                nro_documento : ['a', Validators.required],
-                nro_contacto : ['a', Validators.required],
-                direccion : ['a', Validators.required],
-                ubigeo : ['a', Validators.required],
+                nro_documento : ['', Validators.required],
+                nro_contacto : ['', Validators.required],
+                direccion : ['', Validators.required],
+                ubigeo : ['', Validators.required],
                 // --------
             }),
 
