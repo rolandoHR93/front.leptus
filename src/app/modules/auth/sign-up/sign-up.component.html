@@ -75,8 +75,8 @@
                                     [formControlName]="'tipo_documento'"
                                     [placeholder]="'Tipo Documento'"
                                     required>
-                                    <mat-option value="country-1">DNI</mat-option>
-                                    <mat-option value="country-2">Pasaporte</mat-option>
+                                    <mat-option value="1">DNI</mat-option>
+                                    <mat-option value="2">Pasaporte</mat-option>
                                 </mat-select>
                                 <mat-icon
                                     class="icon-size-5"
@@ -105,8 +105,8 @@
                                     [formControlName]="'sexo'"
                                     [placeholder]="'Sexo'"
                                     required>
-                                    <mat-option value="country-1">Masculino</mat-option>
-                                    <mat-option value="country-2">Femenino</mat-option>
+                                    <mat-option value="1">Masculino</mat-option>
+                                    <mat-option value="2">Femenino</mat-option>
                                 </mat-select>
                                 <mat-icon
                                     class="icon-size-5"
@@ -210,8 +210,8 @@
                                     [formControlName]="'tipo_documento'"
                                     [placeholder]="'Tipo Documento'"
                                     required>
-                                    <mat-option value="country-1">DNI</mat-option>
-                                    <mat-option value="country-2">Pasaporte</mat-option>
+                                    <mat-option value="1">DNI</mat-option>
+                                    <mat-option value="2">Pasaporte</mat-option>
                                 </mat-select>
                                 <mat-icon
                                     class="icon-size-5"
@@ -296,43 +296,83 @@
 
                     <mat-step
                         [formGroupName]="'step3'"
-                        [stepControl]="verticalStepperForm.get('step3')">
+                        [stepControl]="verticalStepperForm.get('step3')"
+                        #verticalStepperStep3>
                         <ng-template matStepLabel>Perfil</ng-template>
                         <p class="my-6 font-medium">
-                            We'll always let you know about important changes, but you pick what else you want to hear about.
+                            People here will get to know you with this information
                         </p>
-                        <div class="flex flex-col gt-sm:flex-row">
-
-                            <div class="flex">
-                                <mat-form-field class="flex-auto">
-                                    <input
-                                        matInput
-                                        [formControlName]="'email'"
-                                        [placeholder]="'Email Address'"
-                                        required>
-                                    <mat-icon
-                                        class="icon-size-5"
-                                        matPrefix
-                                        [svgIcon]="'heroicons_solid:mail'"></mat-icon>
-                                </mat-form-field>
-                            </div>
-
-                            <div class="flex">
-                                <mat-form-field class="flex-auto">
-                                    <input
-                                        matInput
-                                        [formControlName]="'password'"
-                                        [placeholder]="'Password'"
-                                        required>
-                                    <mat-icon
-                                        class="icon-size-5"
-                                        matPrefix
-                                        [svgIcon]="'heroicons_solid:mail'"></mat-icon>
-                                </mat-form-field>
-                            </div>
-
+                        <div class="flex">
+                            <mat-form-field class="flex-auto">
+                                <input
+                                    matInput
+                                    [formControlName]="'email'"
+                                    [placeholder]="'Email'"
+                                    required>
+                                <mat-icon
+                                    class="icon-size-5"
+                                    matPrefix
+                                    [svgIcon]="'heroicons_solid:mail'"></mat-icon>
+                            </mat-form-field>
                         </div>
-                        <div class="flex justify-end mt-8">
+
+                        <div class="flex">
+                            <!-- Password field -->
+                            <mat-form-field class="flex-auto">
+                                <input
+                                    id="password"
+                                    matInput
+                                    type="password"
+                                    [formControlName]="'password'"
+                                    #passwordField>
+                                <button
+                                    mat-icon-button
+                                    type="button"
+                                    (click)="passwordField.type === 'password' ? passwordField.type = 'text' : passwordField.type = 'password'"
+                                    matSuffix>
+                                    <mat-icon
+                                        class="icon-size-5"
+                                        *ngIf="passwordField.type === 'password'"
+                                        [svgIcon]="'heroicons_solid:eye'"></mat-icon>
+                                    <mat-icon
+                                        class="icon-size-5"
+                                        *ngIf="passwordField.type === 'text'"
+                                        [svgIcon]="'heroicons_solid:eye-off'"></mat-icon>
+                                </button>
+                                <mat-error>
+                                    La contraseña es obligatoria
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+
+                        <!-- Password confirm field -->
+                        <div class="flex">
+                            <mat-form-field class="w-full">
+                                <mat-label>Contraseña (Confirmar)</mat-label>
+                                <input
+                                    id="password-confirm"
+                                    matInput
+                                    type="password"
+                                    [formControlName]="'passwordConfirm'"
+                                    #passwordConfirmField>
+                                <button
+                                    mat-icon-button
+                                    type="button"
+                                    (click)="passwordConfirmField.type === 'password' ? passwordConfirmField.type = 'text' : passwordConfirmField.type = 'password'"
+                                    matSuffix>
+                                    <mat-icon
+                                        class="icon-size-5"
+                                        *ngIf="passwordConfirmField.type === 'password'"
+                                        [svgIcon]="'heroicons_solid:eye'"></mat-icon>
+                                    <mat-icon
+                                        class="icon-size-5"
+                                        *ngIf="passwordConfirmField.type === 'text'"
+                                        [svgIcon]="'heroicons_solid:eye-off'"></mat-icon>
+                                </button>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="flex justify-end">
                             <button
                                 class="px-8 mr-2"
                                 mat-flat-button
@@ -345,13 +385,13 @@
                                 class="px-8"
                                 mat-flat-button
                                 [color]="'primary'"
+                                [disabled]="verticalStepperStep3.stepControl.pristine || verticalStepperStep3.stepControl.invalid"
                                 type="button"
-                                (click)="verticalStepper.reset();">
+                                matStepperNext>
                                 Registrar
                             </button>
                         </div>
                     </mat-step>
-
                 </mat-vertical-stepper>
             </form>
 
