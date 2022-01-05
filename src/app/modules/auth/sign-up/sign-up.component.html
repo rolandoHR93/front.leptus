@@ -143,15 +143,16 @@
 
                         <div class="flex">
                             <mat-form-field class="flex-auto">
-                                <input
-                                    matInput
-                                    [formControlName]="'ubigeo'"
-                                    [placeholder]="'Ubigeo'"
+                                <mat-select
+                                    [formControlName]="'departamento'"
+                                    [placeholder]="'Departamento'"
                                     required>
+                                    <mat-option *ngFor="let dato of departamentosIniciales" [value]="dato.COD_DEPARTAMENTO">{{dato.DEPARTAMENTO}}</mat-option>
+                                </mat-select>
                                 <mat-icon
                                     class="icon-size-5"
                                     matPrefix
-                                    [svgIcon]="'heroicons_solid:clipboard'"></mat-icon>
+                                    [svgIcon]="'heroicons_solid:location-marker'"></mat-icon>
                             </mat-form-field>
                         </div>
 
@@ -258,15 +259,16 @@
 
                         <div class="flex">
                             <mat-form-field class="flex-auto">
-                                <input
-                                    matInput
-                                    [formControlName]="'ubigeo'"
-                                    [placeholder]="'Ubigeo'"
+                                <mat-select
+                                    [formControlName]="'departamento'"
+                                    [placeholder]="'Departamento'"
                                     required>
+                                    <mat-option *ngFor="let dato of departamentosIniciales" [value]="dato.COD_DEPARTAMENTO">{{dato.DEPARTAMENTO}}</mat-option>
+                                </mat-select>
                                 <mat-icon
                                     class="icon-size-5"
                                     matPrefix
-                                    [svgIcon]="'heroicons_solid:clipboard'"></mat-icon>
+                                    [svgIcon]="'heroicons_solid:location-marker'"></mat-icon>
                             </mat-form-field>
                         </div>
 

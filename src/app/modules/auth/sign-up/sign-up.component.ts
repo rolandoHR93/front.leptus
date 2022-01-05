@@ -51,7 +51,9 @@ export class AuthSignUpComponent implements OnInit
                 sexo : ['', Validators.required],
                 fecha_nacimiento : ['', Validators.required],
                 direccion : ['', Validators.required],
-                ubigeo : ['', Validators.required],
+                // ubigeo : ['', Validators.required],
+                departamento : ['', Validators.required],
+
             }),
             step2: this._formBuilder.group({
                 razon_social: ['', Validators.required],
@@ -60,7 +62,7 @@ export class AuthSignUpComponent implements OnInit
                 nro_documento : ['', Validators.required],
                 nro_contacto : ['', Validators.required],
                 direccion : ['', Validators.required],
-                ubigeo : ['', Validators.required],
+                departamento : ['', Validators.required],
                 // --------
             }),
 
