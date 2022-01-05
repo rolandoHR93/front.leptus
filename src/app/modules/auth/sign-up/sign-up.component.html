@@ -75,8 +75,7 @@
                                     [formControlName]="'tipo_documento'"
                                     [placeholder]="'Tipo Documento'"
                                     required>
-                                    <mat-option value="1">DNI</mat-option>
-                                    <mat-option value="2">Pasaporte</mat-option>
+                                    <mat-option *ngFor="let dato of tipoDocPersonasIniciales" [value]="dato.id">{{dato.tipo_documento}}</mat-option>
                                 </mat-select>
                                 <mat-icon
                                     class="icon-size-5"
@@ -105,8 +104,7 @@
                                     [formControlName]="'sexo'"
                                     [placeholder]="'Sexo'"
                                     required>
-                                    <mat-option value="1">Masculino</mat-option>
-                                    <mat-option value="2">Femenino</mat-option>
+                                    <mat-option *ngFor="let sexos of sexosIniciales" [value]="sexos.id">{{sexos.sexo}}</mat-option>
                                 </mat-select>
                                 <mat-icon
                                     class="icon-size-5"
@@ -210,8 +208,7 @@
                                     [formControlName]="'tipo_documento'"
                                     [placeholder]="'Tipo Documento'"
                                     required>
-                                    <mat-option value="1">DNI</mat-option>
-                                    <mat-option value="2">Pasaporte</mat-option>
+                                    <mat-option *ngFor="let dato of tipoDocEmpresasIniciales" [value]="dato.id">{{dato.tipo_documento}}</mat-option>
                                 </mat-select>
                                 <mat-icon
                                     class="icon-size-5"

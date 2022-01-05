@@ -16,6 +16,10 @@ export class AuthSignUpComponent implements OnInit
     resetPasswordForm: FormGroup;
 
     DatosInicialesRegistro?: any;
+    departamentosIniciales?: any;
+    sexosIniciales?: any;
+    tipoDocPersonasIniciales?: any;
+    tipoDocEmpresasIniciales?: any;
     /**
      * Constructor
      */
@@ -80,7 +84,12 @@ export class AuthSignUpComponent implements OnInit
           .subscribe(
             (data) => {
               this.DatosInicialesRegistro =  data;
-              console.log(this.DatosInicialesRegistro.data.sexos);
+              this.departamentosIniciales = this.DatosInicialesRegistro.data.departamentos;
+              this.sexosIniciales = this.DatosInicialesRegistro.data.sexos;
+              this.tipoDocPersonasIniciales = this.DatosInicialesRegistro.data.TipoDocPersona;
+              this.tipoDocEmpresasIniciales = this.DatosInicialesRegistro.data.TipoDocEmpresa;
+
+              console.log(this.departamentosIniciales);
             },
             (error) => {
               console.log(error);
