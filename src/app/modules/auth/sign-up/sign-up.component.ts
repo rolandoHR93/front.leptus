@@ -89,7 +89,7 @@ export class AuthSignUpComponent implements OnInit
               this.tipoDocPersonasIniciales = this.DatosInicialesRegistro.data.TipoDocPersona;
               this.tipoDocEmpresasIniciales = this.DatosInicialesRegistro.data.TipoDocEmpresa;
 
-              console.log(this.departamentosIniciales);
+              console.log(this.DatosInicialesRegistro);
             },
             (error) => {
               console.log(error);
