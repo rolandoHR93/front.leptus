@@ -2,6 +2,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FuseValidators } from '@fuse/validators';
+import { SignUpService } from './sign-up.service';
 
 @Component({
     selector     : 'forms-wizards',
@@ -14,10 +15,14 @@ export class AuthSignUpComponent implements OnInit
     verticalStepperForm: FormGroup;
     resetPasswordForm: FormGroup;
 
+    DatosInicialesRegistro?: any;
     /**
      * Constructor
      */
-    constructor(private _formBuilder: FormBuilder)
+    constructor(
+        private _formBuilder: FormBuilder,
+        private _signUpService: SignUpService,
+        )
     {
     }
 
@@ -67,8 +72,20 @@ export class AuthSignUpComponent implements OnInit
             ),
         }
         );
-
+        this.getServicesList();
     }
+
+    getServicesList(): void {
+        this._signUpService.getDatosInicialesRegistroNuevo()
+          .subscribe(
+            (data) => {
+              this.DatosInicialesRegistro =  data;
+              console.log(this.DatosInicialesRegistro.data.sexos);
+            },
+            (error) => {
+              console.log(error);
+            });
+      }
 
     resetPassword(): void
     {
