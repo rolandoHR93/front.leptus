@@ -25,6 +25,9 @@ export class AuthSignUpComponent implements OnInit
     distritosIniciales?: any= [];
     departamentoID: any = '00';
 
+    provinciaPersonalDisabled: boolean = true;
+    distritoPersonalDisabled: boolean = true;
+
     /**
      * Constructor
      */
@@ -115,6 +118,7 @@ export class AuthSignUpComponent implements OnInit
                 (data)=>{
                     this.provinciasIniciales = data;
                     this.provinciasIniciales = this.provinciasIniciales.data;
+                    this.provinciaPersonalDisabled = false;
                 },
                 (error) =>{
                     console.log(error);
@@ -123,8 +127,9 @@ export class AuthSignUpComponent implements OnInit
         }else{
             this.provinciasIniciales = [];
             this.distritosIniciales = [];
+            this.provinciaPersonalDisabled = true;
+            this.distritoPersonalDisabled = true;
         }
-        console.log(this.departamentoID);
     }
 
     onChangeProvinciaPersonal(ob): void {
@@ -135,7 +140,7 @@ export class AuthSignUpComponent implements OnInit
                 (data)=>{
                     this.distritosIniciales = data;
                     this.distritosIniciales = this.distritosIniciales.data;
-                    console.log(this.distritosIniciales);
+                    this.distritoPersonalDisabled = false;
                 },
                 (error) =>{
                     console.log(error);
@@ -143,6 +148,7 @@ export class AuthSignUpComponent implements OnInit
             );
         }else{
             this.distritosIniciales = [];
+            this.distritoPersonalDisabled = true;
         }
     }
 
