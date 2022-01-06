@@ -53,6 +53,8 @@ export class AuthSignUpComponent implements OnInit
                 direccion : ['', Validators.required],
                 // ubigeo : ['', Validators.required],
                 departamento : ['', Validators.required],
+                provincia : ['', Validators.required],
+                distrito : ['', Validators.required],
 
             }),
             step2: this._formBuilder.group({
@@ -63,6 +65,8 @@ export class AuthSignUpComponent implements OnInit
                 nro_contacto : ['', Validators.required],
                 direccion : ['', Validators.required],
                 departamento : ['', Validators.required],
+                provincia : ['', Validators.required],
+                distrito : ['', Validators.required],
                 // --------
             }),
 
