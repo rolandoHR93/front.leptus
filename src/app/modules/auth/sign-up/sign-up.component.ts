@@ -21,12 +21,21 @@ export class AuthSignUpComponent implements OnInit
     tipoDocPersonasIniciales?: any;
     tipoDocEmpresasIniciales?: any;
 
+    //-----------
     provinciasIniciales?: any = [];
-    distritosIniciales?: any= [];
+    distritosIniciales?: any = [];
     departamentoID: any = '00';
 
     provinciaPersonalDisabled: boolean = true;
     distritoPersonalDisabled: boolean = true;
+
+    //-----------
+    provinciasEmpresaIniciales?: any = [];
+    distritosEmpresaIniciales?: any = [];
+    departamentoEmpresaID: any = '00';
+
+    provinciaEmpresaDisabled: boolean = true;
+    distritoEmpresaDisabled: boolean = true;
 
     /**
      * Constructor
@@ -150,6 +159,52 @@ export class AuthSignUpComponent implements OnInit
             this.distritosIniciales = [];
             this.distritoPersonalDisabled = true;
         }
+    }
+
+    onChangeDepartmentEmpresa(ob): void {
+        this.departamentoEmpresaID = ob.value;
+        if(this.departamentoEmpresaID !== '00'){
+            this._signUpService.getProvinciasInicial(this.departamentoEmpresaID)
+            .subscribe(
+                (data)=>{
+                    this.provinciasEmpresaIniciales = data;
+                    this.provinciasEmpresaIniciales = this.provinciasEmpresaIniciales.data;
+                    console.log(data);
+
+                    this.provinciaEmpresaDisabled = false;
+                },
+                (error) =>{
+                    console.log(error);
+                }
+            );
+        }else{
+            this.provinciasEmpresaIniciales = [];
+            this.distritosEmpresaIniciales = [];
+            this.provinciaEmpresaDisabled = true;
+            this.distritoEmpresaDisabled = true;
+        }
+
+    }
+
+    onChangeProvinciaEmpresa(ob): void {
+        const selectedProvincia = ob.value;
+        if(selectedProvincia !== '00'){
+            this._signUpService.getDistritosInicial(this.departamentoEmpresaID, selectedProvincia)
+            .subscribe(
+                (data)=>{
+                    this.distritosEmpresaIniciales = data;
+                    this.distritosEmpresaIniciales = this.distritosEmpresaIniciales.data;
+                    this.distritoEmpresaDisabled = false;
+                },
+                (error) =>{
+                    console.log(error);
+                }
+            );
+        }else{
+            this.distritosEmpresaIniciales = [];
+            this.distritoEmpresaDisabled = true;
+        }
+
     }
 
     resetPassword(): void

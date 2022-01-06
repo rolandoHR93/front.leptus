@@ -298,6 +298,7 @@
                                 <mat-select
                                     [formControlName]="'departamento'"
                                     [placeholder]="'Departamento'"
+                                    (selectionChange)="onChangeDepartmentEmpresa($event)"
                                     required>
                                     <mat-option *ngFor="let dato of departamentosIniciales" [value]="dato.COD_DEPARTAMENTO">{{dato.DEPARTAMENTO}}</mat-option>
                                 </mat-select>
@@ -313,8 +314,10 @@
                                 <mat-select
                                     [formControlName]="'provincia'"
                                     [placeholder]="'Provincia'"
+                                    (selectionChange)="onChangeProvinciaEmpresa($event)"
+                                    [disabled]="provinciaEmpresaDisabled ? true : null"
                                     required>
-                                    <mat-option   > -</mat-option>
+                                    <mat-option *ngFor="let dato of provinciasEmpresaIniciales" [value]="dato.COD_PROVINCIA">{{dato.PROVINCIA}}</mat-option>
 
                                 </mat-select>
                                 <mat-icon
@@ -329,8 +332,9 @@
                                 <mat-select
                                     [formControlName]="'distrito'"
                                     [placeholder]="'Distrito'"
+                                    [disabled]="distritoEmpresaDisabled ? true : null"
                                     required>
-                                    <mat-option   > -</mat-option>
+                                    <mat-option *ngFor="let dato of distritosEmpresaIniciales" [value]="dato.COD_DISTRITO">{{dato.DISTRITO}}</mat-option>
 
                                 </mat-select>
                                 <mat-icon
