@@ -16,10 +16,15 @@ export class AuthSignUpComponent implements OnInit
     resetPasswordForm: FormGroup;
 
     DatosInicialesRegistro?: any;
-    departamentosIniciales?: any;
+    departamentosIniciales?: any = [];
     sexosIniciales?: any;
     tipoDocPersonasIniciales?: any;
     tipoDocEmpresasIniciales?: any;
+
+    provinciasIniciales?: any = [];
+    distritosIniciales?: any= [];
+    departamentoID: any = '00';
+
     /**
      * Constructor
      */
@@ -82,10 +87,10 @@ export class AuthSignUpComponent implements OnInit
             ),
         }
         );
-        this.getServicesList();
+        this.getDatosIniciales();
     }
 
-    getServicesList(): void {
+    getDatosIniciales(): void {
         this._signUpService.getDatosInicialesRegistroNuevo()
           .subscribe(
             (data) => {
@@ -101,6 +106,45 @@ export class AuthSignUpComponent implements OnInit
               console.log(error);
             });
       }
+
+    onChangeDepartmentPersonal(ob): void {
+        this.departamentoID = ob.value;
+        if(this.departamentoID !== '00'){
+            this._signUpService.getProvinciasInicial(this.departamentoID)
+            .subscribe(
+                (data)=>{
+                    this.provinciasIniciales = data;
+                    this.provinciasIniciales = this.provinciasIniciales.data;
+                },
+                (error) =>{
+                    console.log(error);
+                }
+            );
+        }else{
+            this.provinciasIniciales = [];
+            this.distritosIniciales = [];
+        }
+        console.log(this.departamentoID);
+    }
+
+    onChangeProvinciaPersonal(ob): void {
+        const selectedDepartament = ob.value;
+        if(selectedDepartament !== '00'){
+            this._signUpService.getDistritosInicial(this.departamentoID,selectedDepartament)
+            .subscribe(
+                (data)=>{
+                    this.distritosIniciales = data;
+                    this.distritosIniciales = this.distritosIniciales.data;
+                    console.log(this.distritosIniciales);
+                },
+                (error) =>{
+                    console.log(error);
+                }
+            );
+        }else{
+            this.distritosIniciales = [];
+        }
+    }
 
     resetPassword(): void
     {
