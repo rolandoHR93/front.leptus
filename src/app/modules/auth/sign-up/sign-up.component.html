@@ -114,16 +114,18 @@
                         </div>
 
                         <div class="flex">
-                            <mat-form-field class="flex-auto">
+                            <mat-form-field
+                                [ngClass]="formFieldHelpers"
+                                class="flex-auto">
                                 <input
                                     matInput
                                     [formControlName]="'fecha_nacimiento'"
                                     [placeholder]="'Fecha Nacimiento'"
-                                    required>
-                                <mat-icon
-                                    class="icon-size-5"
-                                    matPrefix
-                                    [svgIcon]="'heroicons_solid:document-text'"></mat-icon>
+                                    [matDatepicker]="picker1">
+                                <mat-datepicker-toggle
+                                    matSuffix
+                                    [for]="picker1"></mat-datepicker-toggle>
+                                <mat-datepicker #picker1></mat-datepicker>
                             </mat-form-field>
                         </div>
 

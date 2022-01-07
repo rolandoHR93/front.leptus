@@ -11,6 +11,7 @@ import { SignUpService } from './sign-up.service';
 })
 export class AuthSignUpComponent implements OnInit
 {
+    formFieldHelpers: string[] = [''];
     horizontalStepperForm: FormGroup;
     verticalStepperForm: FormGroup;
     resetPasswordForm: FormGroup;
@@ -219,4 +220,12 @@ export class AuthSignUpComponent implements OnInit
         this.resetPasswordForm.disable();
 
     }
+
+    /**
+     * Get the form field helpers as string
+     */
+     getFormFieldHelpersAsString(): string
+     {
+         return this.formFieldHelpers.join(' ');
+     }
 }
