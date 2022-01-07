@@ -16,7 +16,6 @@ export class AuthSignUpComponent implements OnInit
     today = new Date();
     maxDate = new Date(this.today.getFullYear()-18,12,12);
     // ----------------
-    horizontalStepperForm: FormGroup;
     verticalStepperForm: FormGroup;
     resetPasswordForm: FormGroup;
 
@@ -226,6 +225,10 @@ export class AuthSignUpComponent implements OnInit
     }
 
     registrarNuevoUduario(): void{
+        console.log(this.verticalStepperForm.controls['step1'].value);
+        console.log(this.verticalStepperForm.controls['step2'].value);
+        console.log(this.verticalStepperForm.controls['step3'].value);
+
         alert('OK');
     }
 
