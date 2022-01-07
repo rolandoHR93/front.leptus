@@ -12,6 +12,10 @@ import { SignUpService } from './sign-up.service';
 export class AuthSignUpComponent implements OnInit
 {
     formFieldHelpers: string[] = [''];
+
+    today = new Date();
+    maxDate = new Date(this.today.getFullYear()-18,12,12);
+    // ----------------
     horizontalStepperForm: FormGroup;
     verticalStepperForm: FormGroup;
     resetPasswordForm: FormGroup;
