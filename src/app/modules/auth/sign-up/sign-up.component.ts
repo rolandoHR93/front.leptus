@@ -225,6 +225,10 @@ export class AuthSignUpComponent implements OnInit
 
     }
 
+    registrarNuevoUduario(): void{
+        alert('OK');
+    }
+
     /**
      * Get the form field helpers as string
      */
