@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { ResetPasswordService } from './reset-password.service';
 import { finalize } from 'rxjs';
 import { fuseAnimations } from '@fuse/animations';
 import { FuseValidators } from '@fuse/validators';
@@ -18,6 +19,7 @@ export class AuthResetPasswordComponent implements OnInit
     @ViewChild('resetPasswordNgForm') resetPasswordNgForm: NgForm;
 
     tokenRecibido: any = '0';
+    emailRecibido: any = '';
 
 
     alert: { type: FuseAlertType; message: string } = {
@@ -32,6 +34,7 @@ export class AuthResetPasswordComponent implements OnInit
      */
     constructor(
         private _authService: AuthService,
+        private _resetPasswordService: ResetPasswordService,
         private _formBuilder: FormBuilder,
         private _route: ActivatedRoute
     )
@@ -47,8 +50,10 @@ export class AuthResetPasswordComponent implements OnInit
      */
     ngOnInit(): void
     {
+        this.emailRecibido = this._route.snapshot.params['email'];
         this.tokenRecibido = this._route.snapshot.params['token'];
-        console.log(this._route.snapshot.params['token']);
+
+        console.log( this.emailRecibido);
 
         // Create the form
         this.resetPasswordForm = this._formBuilder.group({
@@ -83,7 +88,11 @@ export class AuthResetPasswordComponent implements OnInit
         this.showAlert = false;
 
         // Send the request to the server
-        this._authService.resetPassword(this.resetPasswordForm.get('password').value)
+        this._resetPasswordService.resetPassword(
+            this.emailRecibido,
+            this.resetPasswordForm.get('password').value,
+            this.resetPasswordForm.get('passwordConfirm').value,
+            this.tokenRecibido)
             .pipe(
                 finalize(() => {
 
@@ -103,7 +112,7 @@ export class AuthResetPasswordComponent implements OnInit
                     // Set the alert
                     this.alert = {
                         type   : 'success',
-                        message: 'Your password has been reset.'
+                        message: 'Su contraseña ha sido cambiada.'
                     };
                 },
                 (response) => {
@@ -111,7 +120,7 @@ export class AuthResetPasswordComponent implements OnInit
                     // Set the alert
                     this.alert = {
                         type   : 'error',
-                        message: 'Something went wrong, please try again.'
+                        message: 'Algo salió mal. Por favor, vuelva a intentarlo.'
                     };
                 }
             );
