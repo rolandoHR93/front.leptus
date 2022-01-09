@@ -31,10 +31,19 @@ export class SignUpService {
 	}
 
     register(nombres: string, email: string, password: string): Observable<any> {
-        return this._httpClient.post(AUTH_API  + '/auth/' + 'register/' + CODE_API, {
-        nombres,
-        email,
-        password
-        }, httpOptions);
+
+        const datosRegistro = {
+            'persona':{
+
+            },
+            'empresa':{
+
+            },
+            'usaurio':{
+
+            },
+        };
+
+        return this._httpClient.post(AUTH_API  + '/auth/' + 'register/' + CODE_API, datosRegistro, httpOptions);
     }
 }

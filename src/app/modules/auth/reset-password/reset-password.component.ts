@@ -5,6 +5,7 @@ import { fuseAnimations } from '@fuse/animations';
 import { FuseValidators } from '@fuse/validators';
 import { FuseAlertType } from '@fuse/components/alert';
 import { AuthService } from 'app/core/auth/auth.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector     : 'auth-reset-password',
@@ -15,6 +16,9 @@ import { AuthService } from 'app/core/auth/auth.service';
 export class AuthResetPasswordComponent implements OnInit
 {
     @ViewChild('resetPasswordNgForm') resetPasswordNgForm: NgForm;
+
+    tokenRecibido: any = '0';
+
 
     alert: { type: FuseAlertType; message: string } = {
         type   : 'success',
@@ -28,7 +32,8 @@ export class AuthResetPasswordComponent implements OnInit
      */
     constructor(
         private _authService: AuthService,
-        private _formBuilder: FormBuilder
+        private _formBuilder: FormBuilder,
+        private _route: ActivatedRoute
     )
     {
     }
@@ -42,6 +47,9 @@ export class AuthResetPasswordComponent implements OnInit
      */
     ngOnInit(): void
     {
+        this.tokenRecibido = this._route.snapshot.params['token'];
+        console.log(this._route.snapshot.params['token']);
+
         // Create the form
         this.resetPasswordForm = this._formBuilder.group({
                 password       : ['', Validators.required],
