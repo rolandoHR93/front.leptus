@@ -4,6 +4,7 @@ import { finalize } from 'rxjs';
 import { fuseAnimations } from '@fuse/animations';
 import { FuseAlertType } from '@fuse/components/alert';
 import { AuthService } from 'app/core/auth/auth.service';
+import { ForgotPasswordService } from './forgot-password.service';
 
 @Component({
     selector     : 'auth-forgot-password',
@@ -27,7 +28,8 @@ export class AuthForgotPasswordComponent implements OnInit
      */
     constructor(
         private _authService: AuthService,
-        private _formBuilder: FormBuilder
+        private _formBuilder: FormBuilder,
+        private _forgotPasswordService: ForgotPasswordService,
     )
     {
     }
@@ -69,7 +71,7 @@ export class AuthForgotPasswordComponent implements OnInit
         this.showAlert = false;
 
         // Forgot password
-        this._authService.forgotPassword(this.forgotPasswordForm.get('email').value)
+        this._forgotPasswordService.forgotPassword(this.forgotPasswordForm.get('email').value)
             .pipe(
                 finalize(() => {
 
