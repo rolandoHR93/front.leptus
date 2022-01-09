@@ -18,6 +18,6 @@ export class ForgotPasswordService {
     constructor(private _httpClient: HttpClient) {}
 
     forgotPassword(email: string): Observable<any> {
-        return this._httpClient.post(AUTH_API +'/auth/' + 'forgot-password/' +  CODE_API, email, httpOptions);
+        return this._httpClient.post(AUTH_API +'/auth/' + 'forgot-password/' +  CODE_API, {email:email}, httpOptions);
     }
 }
