@@ -30,19 +30,15 @@ export class SignUpService {
 		return this._httpClient.get<any[]>(AUTH_API + '/ubigeos/getDistritos/' + CODE_API+'/'+deparatamentoID+'/'+provinciaID);
 	}
 
-    register(nombres: string, email: string, password: string): Observable<any> {
+    register(persona: any, empresa: any, usuario: any): Observable<any> {
 
         const datosRegistro = {
-            'persona':{
-
-            },
-            'empresa':{
-
-            },
-            'usaurio':{
-
-            },
+            'persona': persona,
+            'empresa': empresa,
+            'usuario': usuario,
         };
+
+        console.log(datosRegistro);
 
         return this._httpClient.post(AUTH_API  + '/auth/' + 'register/' + CODE_API, datosRegistro, httpOptions);
     }

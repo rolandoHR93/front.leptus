@@ -225,11 +225,22 @@ export class AuthSignUpComponent implements OnInit
     }
 
     registrarNuevoUduario(): void{
-        console.log(this.verticalStepperForm.controls['step1'].value);
-        console.log(this.verticalStepperForm.controls['step2'].value);
-        console.log(this.verticalStepperForm.controls['step3'].value);
+        // console.log(this.verticalStepperForm.controls['step1'].value);
+        // console.log(this.verticalStepperForm.controls['step2'].value);
+        // console.log(this.verticalStepperForm.controls['step3'].value);
 
         alert('OK');
+        this._signUpService.register(this.verticalStepperForm.controls['step1'].value,
+        this.verticalStepperForm.controls['step2'].value,
+        this.verticalStepperForm.controls['step3'].value)
+          .subscribe(
+            (data) => {
+
+              console.log(data);
+            },
+            (error) => {
+              console.log(error);
+            });
     }
 
     /**
