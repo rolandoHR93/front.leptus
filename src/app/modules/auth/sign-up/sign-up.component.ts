@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FuseValidators } from '@fuse/validators';
 import { FuseAlertType } from '@fuse/components/alert';
 import { SignUpService } from './sign-up.service';
@@ -59,6 +60,7 @@ export class AuthSignUpComponent implements OnInit
     constructor(
         private _formBuilder: FormBuilder,
         private _signUpService: SignUpService,
+        private _router: Router,
         )
     {
     }
@@ -276,11 +278,13 @@ export class AuthSignUpComponent implements OnInit
             (data) => {
 
               console.log(data);
+
                 // Set the alert
                 this.alert = {
                     type   : 'success',
                     message: 'Se ha registrado con exito, se envió un correo para activar la cuenta.'
                 };
+              this._router.navigateByUrl('/confirmation-required');
             },
             (error) => {
               console.log(error);
