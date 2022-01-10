@@ -18,6 +18,10 @@ export class SignUpService {
 
     constructor(private _httpClient: HttpClient) {}
 
+    getdatosRandom(): Observable<any[]>{
+		return this._httpClient.get<any[]>('http://api.leptus.pe/api/auth/getRegisterHome/iT3BnOENtV30pxRDadZ99e43wbDL4NA9');
+    }
+
     getDatosInicialesRegistroNuevo(): Observable<any[]> {
 		return this._httpClient.get<any[]>(AUTH_API + '/auth/' + 'getRegisterHome/' + CODE_API);
 	}
