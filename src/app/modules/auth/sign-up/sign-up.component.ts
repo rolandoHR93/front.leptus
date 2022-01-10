@@ -2,7 +2,9 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FuseValidators } from '@fuse/validators';
+import { FuseAlertType } from '@fuse/components/alert';
 import { SignUpService } from './sign-up.service';
+import { finalize } from 'rxjs';
 
 @Component({
     selector     : 'forms-wizards',
@@ -40,6 +42,16 @@ export class AuthSignUpComponent implements OnInit
 
     provinciaEmpresaDisabled: boolean = true;
     distritoEmpresaDisabled: boolean = true;
+
+
+    // -----------
+    buttonRegisterDisabled: boolean = false;
+
+    alert: { type: FuseAlertType; message: string } = {
+        type   : 'success',
+        message: ''
+    };
+    showAlert: boolean = false;
 
     /**
      * Constructor
@@ -229,16 +241,55 @@ export class AuthSignUpComponent implements OnInit
         // console.log(this.verticalStepperForm.controls['step2'].value);
         // console.log(this.verticalStepperForm.controls['step3'].value);
 
+        // Disable the form
+        this.verticalStepperForm.disable();
+
+        // Hide the alert
+        this.showAlert = false;
+
+        //Disabled button Register
+        this.buttonRegisterDisabled = true;
+
+        document.body.style.cursor = 'progress';
+
         this._signUpService.register(this.verticalStepperForm.controls['step1'].value,
         this.verticalStepperForm.controls['step2'].value,
         this.verticalStepperForm.controls['step3'].value)
+            .pipe(
+                finalize(() => {
+
+                    // Re-enable the form
+                    this.verticalStepperForm.enable();
+
+                    // Reset the form
+                    // this.resetPasswordNgForm.resetForm();
+
+                    // Show the alert
+                    this.showAlert = true;
+
+                    this.buttonRegisterDisabled = false;
+
+                    document.body.style.cursor = 'auto';
+                })
+            )
           .subscribe(
             (data) => {
 
               console.log(data);
+                // Set the alert
+                this.alert = {
+                    type   : 'success',
+                    message: 'Se ha registrado con exito, se envió un correo para activar la cuenta.'
+                };
             },
             (error) => {
               console.log(error);
+
+              // Set the alert
+                this.alert = {
+                    type   : 'error',
+                    message: 'Algo salió mal. Por favor, vuelva a intentarlo.'
+                };
             });
     }
 

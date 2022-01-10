@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
+import { FuseAlertModule } from '@fuse/components/alert';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -26,6 +27,7 @@ export const routes: Route[] = [
     ],
     imports     : [
         RouterModule.forChild(routes),
+        FuseAlertModule,
         MatButtonModule,
         MatCheckboxModule,
         MatDatepickerModule,

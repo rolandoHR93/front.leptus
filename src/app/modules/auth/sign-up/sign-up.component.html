@@ -460,7 +460,7 @@
                                 mat-flat-button
                                 [color]="'primary'"
                                 (click)="registrarNuevoUduario()"
-                                [disabled]="verticalStepperStep3.stepControl.pristine || verticalStepperStep3.stepControl.invalid"
+                                [disabled]="verticalStepperStep3.stepControl.pristine || verticalStepperStep3.stepControl.invalid || (buttonRegisterDisabled ? true : null)"
                                 type="button"
                                 matStepperNext>
                                 Registrar
@@ -469,7 +469,16 @@
                     </mat-step>
                 </mat-vertical-stepper>
             </form>
-
+            <!-- Alert -->
+            <fuse-alert
+                class="mt-8 -mb-4"
+                *ngIf="showAlert"
+                [appearance]="'outline'"
+                [showIcon]="false"
+                [type]="alert.type"
+                [@shake]="alert.type === 'error'">
+                {{alert.message}}
+            </fuse-alert>
         </div>
 
     </div>
