@@ -229,7 +229,6 @@ export class AuthSignUpComponent implements OnInit
         // console.log(this.verticalStepperForm.controls['step2'].value);
         // console.log(this.verticalStepperForm.controls['step3'].value);
 
-        alert('OK');
         this._signUpService.register(this.verticalStepperForm.controls['step1'].value,
         this.verticalStepperForm.controls['step2'].value,
         this.verticalStepperForm.controls['step3'].value)
