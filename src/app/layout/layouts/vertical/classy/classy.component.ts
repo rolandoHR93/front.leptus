@@ -7,6 +7,7 @@ import { Navigation } from 'app/core/navigation/navigation.types';
 import { NavigationService } from 'app/core/navigation/navigation.service';
 import { User } from 'app/core/user/user.types';
 import { UserService } from 'app/core/user/user.service';
+import { TokenStorageService } from 'app/core/services/auth/token-storage.service';
 
 @Component({
     selector     : 'classy-layout',
@@ -29,7 +30,8 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy
         private _navigationService: NavigationService,
         private _userService: UserService,
         private _fuseMediaWatcherService: FuseMediaWatcherService,
-        private _fuseNavigationService: FuseNavigationService
+        private _fuseNavigationService: FuseNavigationService,
+        private _tokenStorageUser: TokenStorageService
     )
     {
     }
@@ -63,11 +65,12 @@ export class ClassyLayoutComponent implements OnInit, OnDestroy
             });
 
         // Subscribe to the user service
-        this._userService.user$
-            .pipe((takeUntil(this._unsubscribeAll)))
-            .subscribe((user: User) => {
-                this.user = user;
-            });
+        this.user =this._tokenStorageUser.getUser();
+        // this._userService.user$
+        //     .pipe((takeUntil(this._unsubscribeAll)))
+        //     .subscribe((user: User) => {
+        //         this.user = user;
+        //     });
 
         // Subscribe to media changes
         this._fuseMediaWatcherService.onMediaChange$

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Injectable } from '@angular/core';
 
 const TOKEN_KEY = 'auth-token';
@@ -15,7 +16,6 @@ export class TokenStorageService {
     window.sessionStorage.clear();
   }
 
-  // eslint-disable-next-line @typescript-eslint/naming-convention
   public saveToken(token: string, token_Type: string): void {
     window.sessionStorage.removeItem(TOKEN_KEY);
     window.sessionStorage.setItem(TOKEN_KEY, token);
