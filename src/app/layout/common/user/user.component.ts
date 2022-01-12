@@ -4,6 +4,7 @@ import { BooleanInput } from '@angular/cdk/coercion';
 import { Subject, takeUntil } from 'rxjs';
 import { User } from 'app/core/user/user.types';
 import { UserService } from 'app/core/user/user.service';
+import { TokenStorageService } from 'app/core/services/auth/token-storage.service';
 
 @Component({
     selector       : 'user',
@@ -29,7 +30,8 @@ export class UserComponent implements OnInit, OnDestroy
     constructor(
         private _changeDetectorRef: ChangeDetectorRef,
         private _router: Router,
-        private _userService: UserService
+        private _userService: UserService,
+        private _tokenStorageUser: TokenStorageService
     )
     {
     }
@@ -43,15 +45,18 @@ export class UserComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
-        // Subscribe to user changes
-        this._userService.user$
-            .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe((user: User) => {
-                this.user = user;
 
-                // Mark for check
-                this._changeDetectorRef.markForCheck();
-            });
+        // Subscribe to user changes
+        this.user =this._tokenStorageUser.getUser();
+
+        // this._userService.user$
+        //     .pipe(takeUntil(this._unsubscribeAll))
+        //     .subscribe((user: User) => {
+        //         this.user = user;
+
+        //         // Mark for check
+        //         this._changeDetectorRef.markForCheck();
+        //     });
     }
 
     /**
