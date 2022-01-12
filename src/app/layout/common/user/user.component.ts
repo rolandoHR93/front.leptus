@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { BooleanInput } from '@angular/cdk/coercion';
@@ -15,9 +16,7 @@ import { TokenStorageService } from 'app/core/services/auth/token-storage.servic
 })
 export class UserComponent implements OnInit, OnDestroy
 {
-    /* eslint-disable @typescript-eslint/naming-convention */
     static ngAcceptInputType_showAvatar: BooleanInput;
-    /* eslint-enable @typescript-eslint/naming-convention */
 
     @Input() showAvatar: boolean = true;
     user: User;
