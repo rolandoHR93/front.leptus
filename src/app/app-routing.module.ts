@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ModulosRoutingModule } from './modules/modulos.routing';
 
 import { AuthGuard } from './core/guards/auth/auth.guard';
 import { NoAuthGuard } from './core/guards/auth/no-auth.guard';
@@ -8,7 +10,6 @@ import { InitialDataResolver } from 'app/app.resolvers';
 
 // @formatter:off
 /* eslint-disable max-len */
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
 const routes: Routes = [
     // Redirect empty path to '/home'
     {path: '', redirectTo: 'home', pathMatch : 'full'},
@@ -90,6 +91,7 @@ const routes: Routes = [
 @NgModule({
     imports: [
         RouterModule.forRoot(routes),
+        ModulosRoutingModule
     ],
     exports: [RouterModule]
 })
