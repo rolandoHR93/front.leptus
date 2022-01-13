@@ -3,89 +3,89 @@ import { FuseNavigationItem } from '@fuse/components/navigation';
 
 export const defaultNavigation: FuseNavigationItem[] = [
     {
-        id      : 'dashboards',
+        id      : 'dashboard',
         title   : 'Dashboard',
         subtitle: 'Acceso Rápido',
         type    : 'group',
         icon    : 'heroicons_outline:home',
         children: [
             {
-                id   : 'dashboards.administracion',
+                id   : 'dashboard.administracion',
                 title: 'Administración',
                 type : 'collapsable',
                 icon : 'heroicons_outline:menu-alt-2',
                 children: [
                     {
-                        id   : 'dashboards.administracion.usuarios',
+                        id   : 'dashboard.administracion.usuarios',
                         title: 'Usuarios',
                         type : 'basic',
                         icon : 'heroicons_outline:user-group',
-                        link : '/dashboards/administracion/usuarios',
+                        link : '/dashboard/administracion/usuarios',
                     },
                     {
-                        id   : 'dashboards.administracion.cliene',
+                        id   : 'dashboard.administracion.cliene',
                         title: 'Cliente',
                         type : 'basic',
                         icon : 'heroicons_outline:minus-sm',
-                        link : '/dashboards/administracion/cliene',
+                        link : '/dashboard/administracion/cliene',
                     },
                     {
-                        id   : 'dashboards.administracion.personalInterno',
+                        id   : 'dashboard.administracion.personalInterno',
                         title: 'Personal Interno',
                         type : 'basic',
                         icon : 'heroicons_outline:minus-sm',
-                        link : '/dashboards/administracion/personalInterno',
+                        link : '/dashboard/administracion/personalInterno',
                     },
                     {
-                        id   : 'dashboards.administracion.servicios',
+                        id   : 'dashboard.administracion.servicios',
                         title: 'Servicios',
                         type : 'basic',
                         icon : 'heroicons_outline:minus-sm',
-                        link : '/dashboards/administracion/servicios',
+                        link : '/dashboard/administracion/servicios',
                     },
                     {
-                        id   : 'dashboards.administracion.modulos',
+                        id   : 'dashboard.administracion.modulos',
                         title: 'Módulos',
                         type : 'basic',
                         icon : 'heroicons_outline:minus-sm',
-                        link : '/dashboards/administracion/modulos',
+                        link : '/dashboard/administracion/modulos',
                     },
                     {
-                        id   : 'dashboards.administracion.permisos',
+                        id   : 'dashboard.administracion.permisos',
                         title: 'Permisos',
                         type : 'basic',
                         icon : 'heroicons_outline:minus-sm',
-                        link : '/dashboards/administracion/permisos',
+                        link : '/dashboard/administracion/permisos',
                     },
                 ]
             },
             {
-                id   : 'dashboards.ventas',
+                id   : 'dashboard.ventas',
                 title: 'Ventas',
                 type : 'basic',
                 icon : 'heroicons_outline:cash',
-                link : '/dashboards/ventas'
+                link : '/dashboard/ventas'
             },
             {
-                id   : 'dashboards.facturacion',
+                id   : 'dashboard.facturacion',
                 title: 'Facturación',
                 type : 'basic',
                 icon : 'heroicons_outline:currency-dollar',
-                link : '/dashboards/facturacion'
+                link : '/dashboard/facturacion'
             },
             {
-                id   : 'dashboards.analytics',
+                id   : 'dashboard.analytics',
                 title: 'Análisis',
                 type : 'basic',
                 icon : 'heroicons_outline:chart-pie',
-                link : '/dashboards/analytics'
+                link : '/dashboard/analytics'
             },
             {
-                id   : 'dashboards.settings',
+                id   : 'dashboard.settings',
                 title: 'Settings',
                 type : 'basic',
                 icon : 'heroicons_outline:cog',
-                link : '/dashboards/settings'
+                link : '/dashboard/settings'
             }
         ]
     },

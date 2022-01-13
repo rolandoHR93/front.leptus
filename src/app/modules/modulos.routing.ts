@@ -16,8 +16,13 @@ const routes: Routes = [
         resolve    : {
             initialData: InitialDataResolver,
         },
-        children   : [
-            {path: 'usuarios', loadChildren: () => import('app/modules/contacts/contacts.module').then(m => m.ContactsModule)},
+        children : [
+            {
+                path     : 'administracion',
+                children   : [
+                    {path: 'usuarios', loadChildren: () => import('app/modules/contacts/contacts.module').then(m => m.ContactsModule)},
+                ]
+            }
         ]
     },
 ];
