@@ -23,20 +23,20 @@ import { ServicioComponent } from './servicio/servicio.component';
     ],
     imports     : [
         RouterModule.forChild(serviciosRoutes),
-        MatButtonModule,
-        MatCheckboxModule,
-        MatFormFieldModule,
-        MatIconModule,
-        MatInputModule,
-        MatMenuModule,
-        MatPaginatorModule,
-        MatProgressBarModule,
-        MatRippleModule,
-        MatSortModule,
-        MatSelectModule,
-        MatSlideToggleModule,
-        MatTooltipModule,
-        SharedModule
+        // MatButtonModule,
+        // MatCheckboxModule,
+        // MatFormFieldModule,
+        // MatIconModule,
+        // MatInputModule,
+        // MatMenuModule,
+        // MatPaginatorModule,
+        // MatProgressBarModule,
+        // MatRippleModule,
+        // MatSortModule,
+        // MatSelectModule,
+        // MatSlideToggleModule,
+        // MatTooltipModule,
+        // SharedModule
     ]
 })
 export class ServiciosModule
