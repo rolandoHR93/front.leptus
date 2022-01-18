@@ -20,7 +20,12 @@ const routes: Routes = [
             {
                 path     : 'administracion',
                 children   : [
-                    {path: 'usuarios', loadChildren: () => import('app/modules/contacts/contacts.module').then(m => m.ContactsModule)},
+                    {path: 'usuarios', loadChildren: () =>
+                        import('app/modules/contacts/contacts.module').then(m => m.ContactsModule)
+                    },
+                    {path: 'servicios', loadChildren: () =>
+                        import('app/modules/Interno/servicios/servicios.module').then(m => m.ServiciosModule)
+                    },
                 ]
             }
         ]

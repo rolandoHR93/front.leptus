@@ -57,6 +57,13 @@ export const defaultNavigation: FuseNavigationItem[] = [
                         icon : 'heroicons_outline:minus-sm',
                         link : '/dashboard/administracion/permisos',
                     },
+                    {
+                        id   : 'dashboard.administracion.roles',
+                        title: 'Roles',
+                        type : 'basic',
+                        icon : 'heroicons_outline:minus-sm',
+                        link : '/dashboard/administracion/roles',
+                    },
                 ]
             },
             {
@@ -91,7 +98,7 @@ export const defaultNavigation: FuseNavigationItem[] = [
                 id   : 'dashboard.analytics',
                 title: 'Gastos',
                 type : 'basic',
-                icon : 'heroicons_outline:chart-pie',
+                icon : 'heroicons_outline:currency-dollar',
                 link : '/dashboard/analytics'
             },
             {

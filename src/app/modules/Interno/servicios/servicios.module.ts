@@ -16,12 +16,10 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { SharedModule } from 'app/shared/shared.module';
 import { serviciosRoutes } from './servicios.routing';
 import { ServicioComponent } from './servicio/servicio.component';
-import { ServicioListComponent } from './servicio/list/servicio.component';
 
 @NgModule({
     declarations: [
         ServicioComponent,
-        ServicioListComponent
     ],
     imports     : [
         RouterModule.forChild(serviciosRoutes),
