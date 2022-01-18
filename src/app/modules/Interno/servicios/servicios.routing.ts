@@ -3,6 +3,6 @@ import { ServicioComponent } from './servicio/servicio.component';
 export const serviciosRoutes: Route[] = [
     {
         path      : '',
-                component: ServicioComponent,
+        component: ServicioComponent,
     },
 ];
